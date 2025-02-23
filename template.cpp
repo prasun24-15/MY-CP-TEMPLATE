@@ -80,8 +80,16 @@ void subseq(string s, string out, int i, vector<string>& subsequences) {
 }
 
 // Priority Queue Macros
-#define mheap priority_queue<ll> // Max-Heap
-#define mnheap priority_queue<ll, vector<ll>, greater<ll>> // Min-Heap
+#define mheapi priority_queue<int> // Max-Heap for int
+#define mnheapi priority_queue<int, vector<int>, greater<int>> // Min-Heap for int
+#define mheapll priority_queue<ll> // Max-Heap for long long
+#define mnheapll priority_queue<ll, vector<ll>, greater<ll>> // Min-Heap for long long
+
+// Ordered & Unordered Map Macros
+#define omapi map<int, int> // Ordered map for int
+#define omapll map<ll, ll> // Ordered map for long long
+#define umapi unordered_map<int, int> // Unordered map for int
+#define umapll unordered_map<ll, ll> // Unordered map for long long
 
 // Loop Macros
 #define FOR_LT(i, a, b) for (int i = (a); i < (b); i++)
