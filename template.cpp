@@ -101,4 +101,7 @@ void subseq(string s, string out, int i) {
 #define WGT WHILE_GT
 #define WGE WHILE_GE
 
+// Auto Loop Macro
+#define FORA(x, container) for (auto& x : container)
+
 // Prasun Singh Template 🚀
