@@ -56,30 +56,32 @@ ll nPr(ll n, ll r) {
     return fact[n] * power(fact[n - r], MOD - 2, MOD) % MOD;
 }
 
-// Generate all permutations of a string and store in vector
-vector<string> permutations;
-void permute(string s, int l, int r) {
+// Generate all permutations of a string and store in a vector passed as a parameter
+void permute(string s, int l, int r, vector<string>& permutations) {
     if (l == r) {
         permutations.push_back(s);
         return;
     }
     for (int i = l; i <= r; i++) {
         swap(s[l], s[i]);
-        permute(s, l + 1, r);
+        permute(s, l + 1, r, permutations);
         swap(s[l], s[i]);
     }
 }
 
-// Generate all subsequences of a string and store in vector
-vector<string> subsequences;
-void subseq(string s, string out, int i) {
+// Generate all subsequences of a string and store in a vector passed as a parameter
+void subseq(string s, string out, int i, vector<string>& subsequences) {
     if (i == sz(s)) {
         subsequences.push_back(out);
         return;
     }
-    subseq(s, out + s[i], i + 1);
-    subseq(s, out, i + 1);
+    subseq(s, out + s[i], i + 1, subsequences);
+    subseq(s, out, i + 1, subsequences);
 }
+
+// Priority Queue Macros
+#define mheap priority_queue<ll> // Max-Heap
+#define mnheap priority_queue<ll, vector<ll>, greater<ll>> // Min-Heap
 
 // Loop Macros
 #define FOR_LT(i, a, b) for (int i = (a); i < (b); i++)
