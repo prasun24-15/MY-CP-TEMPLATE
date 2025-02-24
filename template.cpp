@@ -5,7 +5,7 @@ using namespace std;
 #define MOD 1000000007
 #define sz(x) (int)(x).size()
 #define all(x) (x).begin(), (x).end()
-
+#define pb(x) push_back(x)
 // Fast Input/Output
 #define FAST_IO ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 
