@@ -78,6 +78,41 @@ void subseq(string s, string out, int i, vector<string>& subsequences) {
     subseq(s, out + s[i], i + 1, subsequences);
     subseq(s, out, i + 1, subsequences);
 }
+vector<bool> simple_sieve(int limit) {
+    vector<bool> prime(limit + 1, true);
+    prime[0] = prime[1] = false;
+    for (int p = 2; p * p <= limit; p++) {
+        if (prime[p]) {
+            for (int i = p * p; i <= limit; i += p) {
+                prime[i] = false;
+            }
+        }
+    }
+    return prime;
+}
+
+vector<ll> segmented_sieve(ll low, ll high) {
+    ll limit = sqrt(high) + 1;
+    vector<bool> prime = simple_sieve(limit);
+    vector<bool> is_prime(high - low + 1, true);
+    vector<ll> primes;
+
+    for (ll p = 2; p <= limit; p++) {
+        if (prime[p]) {
+            ll start = max(p * p, (low + p - 1) / p * p);
+            for (ll i = start; i <= high; i += p) {
+                is_prime[i - low] = false;
+            }
+        }
+    }
+
+    for (ll i = low; i <= high; i++) {
+        if (is_prime[i - low] && i > 1) {
+            primes.push_back(i);
+        }
+    }
+    return primes;
+}
 
 // Priority Queue Macros
 #define mheapi priority_queue<int> // Max-Heap for int
@@ -113,5 +148,6 @@ void subseq(string s, string out, int i, vector<string>& subsequences) {
 
 // Auto Loop Macro
 #define FORA(x, container) for (auto& x : container)
+
 
 // Prasun Singh Template 🚀
